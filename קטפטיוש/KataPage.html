@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <!-- כותרת הדף -->
+    <title>דף הזנת אילוצים (Kata Page)</title>
+
+    <!-- קישור לקובץ העיצוב -->
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+
+    <!-- סרגל ניווט עליון -->
+    <nav>
+        <a href="Home.html"> דף הבית</a>
+        <a href="FollowUp.html">דף מעקבים</a>
+        <a href="LogIn.html"> כניסת משתמש</a>
+    </nav>
+
+    <!-- כותרת ראשית -->
+    <h1>הזנת אילוצים</h1>
+    <p>כאן תוכל להזין אילוצים למגמת הלימוד שלך!</p>
+
+    <!-- טופס שליחת האילוצים לשרת -->
+    <form  method="POST" id="constraints-form">
+
+        <!-- בחירת מגמת לימוד -->
+        <div id="choose_degree">
+            <h2>1. בחר את מגמת הלימוד שלך:</h2>
+
+            <label for="degree_select">בחר מגמה:</label>
+            <select id="degree_select" name="choose_degree" required>
+                <option value="" disabled selected>בחר מגמה מהרשימה </option>
+                <option value="niulma">ניהולמע</option>
+                <option value="madmah">מדמ"ח</option>
+                <option value="politika">פוליטיקה</option>
+            </select>
+        </div>
+
+        <br><hr><br>
+
+        <!-- בחירת היקף האילוץ: כל המגמה או צוער ספציפי -->
+        <h2>2. האילוץ חל על:</h2>
+
+        <input type="radio" id="scope_all" name="scope" value="all_magama" checked>
+        <label for="scope_all">כל המגמה</label>
+        <br>
+
+        <input type="radio" id="scope_single" name="scope" value="single_student">
+        <label for="scope_single">צוער ספציפי</label>
+        <br><br>
+
+        <!-- בחירת צוער (מופעל רק אם בוחרים "צוער ספציפי") -->
+        <label for="select_student">בחר שם הצוער (אם רלוונטי):</label>
+        <select id="select_student" name="student_name" disabled >
+            <option value="cadet1">רועי יסעור</option> <!--דוגמא לרשימה, בהוספת צד שרת הוא ישאב את הרימה משם-->
+            <option value="cadet2">יונתן דמצ'ינסקי</option>
+            <option value="cadet3">אמיתי הס</option>
+        </select>
+
+        <br><br><hr><br>
+
+        <!-- בחירת יום בשבוע -->
+        <div id="choose_day">
+            <h2>3. בחר את היום בשבוע:</h2>
+
+            <label for="day_select">בחר יום:</label>
+            <select id="day_select" name="day_of_week" required>
+                <option value="" disabled selected>בחר יום מהרשימה </option>
+                <option value="sun">ראשון</option>
+                <option value="mon">שני</option>
+                <option value="tue">שלישי</option>
+                <option value="wed">רביעי</option>
+                <option value="thu">חמישי</option>
+                <option value="fri">שישי</option>
+                <option value="sat">שבת</option>
+            </select>
+        </div>
+
+        <br><br><hr><br>
+
+        <!-- טווח שעות האילוץ -->
+        <h2>4. טווח שעות האילוץ (שעות אי-פניות):</h2>
+
+        <label for="start_time">שעת התחלה:</label>
+        <input type="time" id="start_time" name="start_time" required>
+        <br>
+
+        <label for="end_time">שעת סיום:</label>
+        <input type="time" id="end_time" name="end_time" required>
+
+        <br><br><hr><br>
+
+        <!-- כפתור שליחה -->
+        <button type="submit" >סיימתי להזין את האילוץ</button>
+
+    </form>
+
+       
+
+     <script src="project.js"></script>
+
+</body>
+</html>
