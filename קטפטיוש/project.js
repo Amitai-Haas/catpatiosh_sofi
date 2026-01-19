@@ -75,5 +75,4 @@ window.onload = function() {
             setTimeout(toggleStudentSelect, 10);
         });
     }
-
-}; // הסוגר הזה סוגר את כל ה-window.onload הגדול
+}; //window
