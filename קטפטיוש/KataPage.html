@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <!-- כותרת הדף -->
@@ -13,9 +14,9 @@
 
     <!-- סרגל ניווט עליון -->
     <nav>
-        <a href="Home.html"> דף הבית</a>
-        <a href="FollowUp.html">דף מעקבים</a>
-        <a href="LogIn.html"> כניסת משתמש</a>
+        <a href="/home"> דף הבית</a>
+        <a href="/FollowUp"> דף מעקבים</a>
+        <a href="/logout"> התנתקות</a>
     </nav>
 
     <!-- כותרת ראשית -->
@@ -23,22 +24,23 @@
     <p>כאן תוכל להזין אילוצים למגמת הלימוד שלך!</p>
 
     <!-- טופס שליחת האילוצים לשרת -->
-    <form  method="POST" id="constraints-form">
+    <form method="POST" id="constraints-form" action="/constraints">
 
         <!-- בחירת מגמת לימוד -->
         <div id="choose_degree">
             <h2>1. בחר את מגמת הלימוד שלך:</h2>
 
-            <label for="degree_select">בחר מגמה:</label>
-            <select id="degree_select" name="choose_degree" required>
+            <label for="degree">בחר מגמה:</label>
+            <select id="degree_select" name="degree" required>
                 <option value="" disabled selected>בחר מגמה מהרשימה </option>
-                <option value="niulma">ניהולמע</option>
-                <option value="madmah">מדמ"ח</option>
-                <option value="politika">פוליטיקה</option>
+                <option value='ניהולמ"ע'>ניהולמ"ע</option>
+                <option value='מדמ"ח'>מדמ"ח</option>
+                <option value='פוליטיקה'>פוליטיקה</option>
             </select>
         </div>
 
-        <br><hr><br>
+        <br>
+        <hr><br>
 
         <!-- בחירת היקף האילוץ: כל המגמה או צוער ספציפי -->
         <h2>2. האילוץ חל על:</h2>
@@ -52,14 +54,12 @@
         <br><br>
 
         <!-- בחירת צוער (מופעל רק אם בוחרים "צוער ספציפי") -->
-        <label for="select_student">בחר שם הצוער (אם רלוונטי):</label>
-        <select id="select_student" name="student_name" disabled >
-            <option value="cadet1">רועי יסעור</option> <!--דוגמא לרשימה, בהוספת צד שרת הוא ישאב את הרימה משם-->
-            <option value="cadet2">יונתן דמצ'ינסקי</option>
-            <option value="cadet3">אמיתי הס</option>
-        </select>
+        <label for="select_student"> שם הצוער (אם רלוונטי):</label><br>
+        <input type="text" id="select_student" name="student_name" disabled placeholder="שם מלא"></input>
 
-        <br><br><hr><br>
+
+        <br><br>
+        <hr><br>
 
         <!-- בחירת יום בשבוע -->
         <div id="choose_day">
@@ -78,7 +78,8 @@
             </select>
         </div>
 
-        <br><br><hr><br>
+        <br><br>
+        <hr><br>
 
         <!-- טווח שעות האילוץ -->
         <h2>4. טווח שעות האילוץ (שעות אי-פניות):</h2>
@@ -90,16 +91,34 @@
         <label for="end_time">שעת סיום:</label>
         <input type="time" id="end_time" name="end_time" required>
 
-        <br><br><hr><br>
+        <br><br>
+        <hr><br>
 
         <!-- כפתור שליחה -->
-        <button type="submit" >סיימתי להזין את האילוץ</button>
+        <button type="submit">סיימתי להזין את האילוץ</button>
+        <button onclick="window.location.href='/show-all-constraints'">כל האילוצים השבועיים</button>
 
     </form>
 
-       
+    <div class="delete-container">
+        <form action="/delete-constraints" method="POST"
+            onsubmit="return confirm('האם אתה בטוח שברצונך למחוק את כל האילוצים השבועיים?\nפעולה זו אינה הפיכה!');">
 
-     <script src="project.js"></script>
+            <button type="submit" class="delete-btn">
+                מחק את כל האילוצים
+            </button>
+        </form>
+        <form action="/generate_schedule" method="POST"
+            onsubmit="return confirm('האם אתה רוצה לשבץ מחדש? שים לב, פעולה זו תמחק את השיבוץ הנוכחי');">
+
+            <button type="submit" class="schedule-btn">
+                שבץ קתפ"ט </button>
+        </form>
+
+
+    </div>
+    <script src="project.js"></script>
 
 </body>
+
 </html>
