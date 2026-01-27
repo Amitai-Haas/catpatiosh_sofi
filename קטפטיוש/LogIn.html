@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <!-- כותרת הדף שמופיעה בלשונית הדפדפן -->
     <title>דף כניסה - קתפטיוש</title>
-
+    <meta charset="UTF-8">
     <!-- קישור לקובץ העיצוב החיצוני -->
     <link rel="stylesheet" href="project.css">
 </head>
+
 <body>
 
-    <!-- תפריט ניווט עליון -->
-    <nav>
-        <a href="Home.html">דף הבית</a>
-        <a href="FollowUp.html">דף מעקבים </a>
-        <a href="KataPage.html">הזנת אילוצים</a>
-    </nav>
-
+    <!-- מחקתי את התפריט כי זה שולח לעמוד בית  -->
     <!-- אזור הלוגו והכוכבים -->
     <div class="logo-container">
         <!-- לוגו מסתובב -->
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ_V6hykE-ur9WbnpWx4ob-UYOA6CZb-QBPg&s" 
-             alt="סמל ביסט" class="spinning-logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ_V6hykE-ur9WbnpWx4ob-UYOA6CZb-QBPg&s"
+            alt="סמל ביסט" class="spinning-logo">
 
         <!-- כוכבים דקורטיביים -->
         <div class="STARS">
@@ -42,7 +38,7 @@
         </div>
 
         <!-- טופס התחברות -->
-        <form id="login-form" action="Home.html" method="post">
+        <form id="login-form" action="/login" method="post">
             <h3>התחברות</h3>
 
             <!-- שדה אימייל -->
@@ -59,7 +55,8 @@
         </form>
 
         <!-- טופס הרשמה (מוסתר בהתחלה) -->
-        <form id="signup-form" action = "LogIn.html" style="display: none;" method="post"> <!--בגלל שאחרי זה צריך להיכנס אין מעבר דף, נתונים נשלחים לשרת בעתיד-->
+        <form id="signup-form" action="/signup" style="display: none;" method="post">
+            <!--בגלל שאחרי זה צריך להיכנס אין מעבר דף, נתונים נשלחים לשרת בעתיד-->
             <h3>מלא פרטים להרשמה:</h3>
 
             <!-- שדה אימייל -->
@@ -68,7 +65,7 @@
 
             <!--שדה שם מלא (לא הופיע בתיאור אך נדרש כדי שבעתיד המערכת תוכל לאתר בקלות את שם הצוער ע''פ ההתחברות)')-->
             <label for="full-name">שם מלא</label><br>
-            <input type="text" id="full-name" required><br><br>
+            <input type="text" name="name" id="full-name" required><br><br>
             <!-- שדה סיסמה -->
 
             <label for="signup-password">סיסמה</label><br>
@@ -76,9 +73,17 @@
 
             <!-- שדה מספר טלפון -->
             <label for="phonenumber">מספר טלפון</label><br>
-            <input type="text" id="phonenumber" name="phone number" required    
-             pattern="05[0-9]{8}"
-             placeholder="05XXXXXXXX"><br><br>
+            <input type="text" id="phonenumber" name="phone" required pattern="05[0-9]{8}"
+                placeholder="05XXXXXXXX"><br><br>
+            <!-- מגמת לימוד -->
+            <label for="degree">מגמת לימוד</label><br>
+            <select id="degree" name="degree" required>
+                <option value="" disabled selected>בחר מגמה מהרשימה </option>
+                <option value='ניהולמ"ע'>ניהולמ"ע</option>
+                <option value='מדמ"ח'>מדמ"ח</option>
+                <option value='פוליטיקה'>פוליטיקה</option>
+            </select>
+            </select><br><br>
 
             <!-- בחירה האם המשתמש הוא קת"ה -->
             <label>האם אתה קת"ה?</label><br>
@@ -86,10 +91,11 @@
             <input type="radio" name="is_kata" value="no" required> לא <br><br>
 
             <!-- כפתור סיום הרשמה -->
-            <button type="submit" id = "signupbtn">סיים הרשמה</button>
+            <button type="submit" id="signupbtn">סיים הרשמה</button>
         </form>
     </div>
 
-   <script src="project.js"></script>
+    <script src="project.js"></script>
 </body>
+
 </html>
